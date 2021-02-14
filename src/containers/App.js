@@ -1,12 +1,11 @@
 
-import Example from "../components/Example";
 import { Component } from "react";
 import appCss from "./App.css"
 import Validation from "../components/validation/Validation";
 import Char from "../components/char/Char"
-import Radium from 'radium';
-
 import React from 'react'
+import Cockpit from "../components/cockpit/cockpit"
+import Persons from "../components/person/persons"
 
 
 class App extends Component{
@@ -43,40 +42,45 @@ class App extends Component{
     this.setState({"userInput":initial.join("")})
   };
   render(){
-    const characterList = this.state.userInput.split("").map((ch,index) => {
-      return <Char character={ch} key={index} clicked={() => this.deleteinputHandler(index)}/>
+    const characterList = this.state.userInput.split("").map((ch, index) => {
+      return (
+        <Char
+          character={ch}
+          key={index}
+          clicked={() => this.deleteinputHandler(index)}
+        />
+      );
     });
-    let buttonStyle = [appCss.Button]
-    let personInfo = null
-    if (this.state.showInfo){
-      personInfo = (<div>{this.state.person.map((person, index) => {
-        return <Example name={person.name} age={person.age} 
-        key={person.id} handler={() => this.deleteHandler(index)} 
-        changed={(event) => this.changeHandler(event, person.id)}/>
-      })}</div>);
-      buttonStyle.push(appCss.Red);
 
+    let personInfo = null;
+    if (this.state.showInfo) {
+      personInfo = (
+        <Persons
+          persons={this.state.person}
+          clicked={this.deleteHandler}
+          changed={this.changeHandler}
+        />
+      );
+    } else {
+      personInfo = <h1>Click on button to show info</h1>;
     }
-    else{
-      personInfo = <h1>Click on button to show info</h1>
-    }
-    let classes = [];
-    if (this.state.person.length <= 1){
-      classes.push(appCss.bold)
-    }
-    if (this.state.person.length <= 2){
-      classes.push(appCss.red)
-    }
+
     return (
       <div className={appCss.App}>
-        <p className={classes.join(" ")}>Person state</p>
-        <button className={buttonStyle.join(" ")} onClick={this.toggleHandler}>This is toggle button</button>
+        <Cockpit
+          showPersonInfo={this.state.showInfo}
+          changed={this.toggleHandler} person={this.state.person}
+        />
         {personInfo}
-        <input type="text" onChange={this.inputChangeHandler} value={this.state.userInput} ></input>
+        <input
+          type="text"
+          onChange={this.inputChangeHandler}
+          value={this.state.userInput}
+        ></input>
         <h1>{this.state.userInput}</h1>
         <Validation length={this.state.userInput.length} />
-        <hr/>
-        <hr/>
+        <hr />
+        <hr />
         {characterList}
       </div>
     );
@@ -85,4 +89,4 @@ class App extends Component{
   
 }
 
-export default Radium(App);
+export default App;
