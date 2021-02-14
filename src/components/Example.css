@@ -1,0 +1,15 @@
+.Example{
+    text-align: center;
+    border: 2px  rgb(134, 46, 46);
+    width: 60%;
+    margin: 16px auto;
+    padding: 16px;
+    box-shadow: 10px 2px 50px rgb(167, 44, 44);
+
+}
+
+@media (max-width : 500px){
+    .person{
+        width: 450px;
+    }
+}

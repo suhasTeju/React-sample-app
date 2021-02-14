@@ -1,0 +1,58 @@
+.App {
+  text-align: center;
+}
+
+.Applogo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.Appheader {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.Apptitle {
+  font-size: 1.5em;
+}
+
+.Appintro {
+  font-size: large;
+}
+
+.Button{
+  background-color : green;
+  margin : 2px;
+  color : white;
+  cursor : pointer;
+}
+.Button:hover{
+  background-color: lightgreen;
+  color: black;
+}
+.Example{
+  text-align: center;
+  border: 2px  rgb(134, 46, 46);
+  width: 60%;
+  margin: 16px auto;
+  padding: 16px;
+  box-shadow: 10px 2px 50px rgb(167, 44, 44);
+
+} 
+.bold {
+  font-weight: bold;
+}
+.red{
+  color: brown;
+}
+.App{
+  text-align: center;
+}
+Button.Red{
+  background-color: red;
+}
+Button.Red:hover{
+  background-color: rosybrown;
+}
